@@ -1,0 +1,7 @@
+# Разрешить ярлыку управлять только двумя службами бота.
+# Пароль пользователя в файлах проекта и на рабочем столе не хранится.
+rockettoom ALL=(root) NOPASSWD: /usr/bin/systemctl start avito-bot.service
+rockettoom ALL=(root) NOPASSWD: /usr/bin/systemctl stop avito-bot.service
+rockettoom ALL=(root) NOPASSWD: /usr/bin/systemctl restart avito-bot.service
+rockettoom ALL=(root) NOPASSWD: /usr/bin/systemctl start mihomo.service
+rockettoom ALL=(root) NOPASSWD: /usr/bin/systemctl stop mihomo.service

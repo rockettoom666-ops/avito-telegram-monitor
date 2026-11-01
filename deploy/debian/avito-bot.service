@@ -1,0 +1,29 @@
+[Unit]
+Description=Avito Telegram Monitor
+Requires=mihomo.service
+Wants=display-manager.service
+After=network-online.target mihomo.service display-manager.service
+
+[Service]
+Type=simple
+User=rockettoom
+Group=rockettoom
+WorkingDirectory=/opt/avito-bot
+EnvironmentFile=/etc/avito-bot.env
+Environment=HOME=/home/rockettoom
+Environment=PLAYWRIGHT_BROWSERS_PATH=/opt/avito-bot/.playwright
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/rockettoom/.Xauthority
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+# Процесс запускается от пользователя активного рабочего стола. Благодаря этому
+# Chromium получает X11, D-Bus и может штатно развернуть окно поверх XFCE.
+ExecStart=/opt/avito-bot/.venv/bin/python -m avito_bot
+Restart=always
+RestartSec=10
+TimeoutStopSec=45
+KillSignal=SIGINT
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

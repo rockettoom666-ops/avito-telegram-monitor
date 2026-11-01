@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "avito-telegram-monitor"
+version = "0.1.0"
+description = "Telegram bot that notifies users about new Avito listings"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "aiogram>=3.20,<4",
+  "aiohttp-socks>=0.10,<1",
+  "aiosqlite>=0.21,<1",
+  "playwright>=1.52,<2",
+  "python-dotenv>=1.1,<2",
+  "tzdata>=2025.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9",
+  "pytest-asyncio>=0.26,<1",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+avito-bot = "avito_bot.main:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]

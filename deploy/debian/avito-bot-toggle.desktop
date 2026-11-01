@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Запустить или остановить Avito-бота
+Comment=Включить или полностью остановить Telegram-бота
+Exec=/opt/avito-bot/scripts/toggle_avito_bot.sh
+Icon=system-run
+Terminal=true
+Categories=Utility;
+StartupNotify=true

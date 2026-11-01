@@ -1,0 +1,17 @@
+[Unit]
+Description=Avito Telegram Monitor (user service)
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/avito-telegram-monitor
+EnvironmentFile=%h/avito-telegram-monitor/.env
+ExecStart=%h/avito-telegram-monitor/.venv/bin/python -m avito_bot
+Restart=on-failure
+RestartSec=10
+KillSignal=SIGINT
+TimeoutStopSec=45
+UMask=0077
+
+[Install]
+WantedBy=default.target
